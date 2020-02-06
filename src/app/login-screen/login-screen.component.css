@@ -1,0 +1,15 @@
+.inputs {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+  }
+  
+  .fullWidth {
+    width: 100%;
+  }
+
+
+.container{
+    width: 60%;
+}
