@@ -15,6 +15,9 @@ import { ForumComponent } from './forum/forum.component';
 import { SubjectScreenComponent } from './subject-screen/subject-screen.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormsModule } from '@angular/forms';
+import { RegisterScreenComponent } from './register-screen/register-screen.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     UserScreenComponent,
     ActivityScreenComponent,
     ForumComponent,
-    SubjectScreenComponent
+    SubjectScreenComponent,
+    RegisterScreenComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,8 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatToolbarModule,
     FormsModule,
+    HttpClientModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

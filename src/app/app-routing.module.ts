@@ -7,7 +7,7 @@ import { SubjectScreenComponent } from './subject-screen/subject-screen.componen
 
 
 const routes: Routes = [
-  {path:'login', component:LoginScreenComponent},
+  {path:'', component:LoginScreenComponent},
   {path:'home', component:UserScreenComponent},
   {path:'atividade', component:ActivityScreenComponent},
   {path:'materia', component:SubjectScreenComponent}

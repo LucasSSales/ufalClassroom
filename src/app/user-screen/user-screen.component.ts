@@ -9,10 +9,12 @@ import { Router } from '@angular/router';
 export class UserScreenComponent implements OnInit {
 
   materias = [{nome:"Linhas", prof:"Arturo"},{nome:"Etica", prof:"Olival"},{nome:"Gestão", prof:"Rafael Amorim"}]
+  loading = true;
 
   constructor(private router:Router) { }
 
   ngOnInit() {
+    //this.loading = false
   }
 
   openSubject(){

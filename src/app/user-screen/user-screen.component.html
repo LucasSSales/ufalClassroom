@@ -1,4 +1,8 @@
+<div *ngIf="loading" class="top">
+        <mat-spinner class="loading"></mat-spinner>
+</div>
 <!-- colocar esse card como componente a parte e depois loopar as materias que ele ta matriculado -->
+<div *ngIf="!loading">
 <div *ngFor="let m of materias" class="cards">
         <mat-card class="container">
                 <mat-card-title-group>
@@ -7,4 +11,5 @@
                 <img mat-card-avatar src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png">
                 </mat-card-title-group>
         </mat-card>
+</div>
 </div>
