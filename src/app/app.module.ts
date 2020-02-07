@@ -13,6 +13,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ForumComponent } from './forum/forum.component';
 import { SubjectScreenComponent } from './subject-screen/subject-screen.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { SubjectScreenComponent } from './subject-screen/subject-screen.componen
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    MatToolbarModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
