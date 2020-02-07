@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginScreenComponent implements OnInit {
 
+  usuario: string;
+  senha: string;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  login(){
+    //console.log(this.usuario, this.senha)
   }
 
 }

@@ -2,7 +2,7 @@
 <div *ngFor="let m of materias" class="cards">
         <mat-card class="container">
                 <mat-card-title-group>
-                <mat-card-title>{{m.nome}}</mat-card-title>
+                <mat-card-title (click)="openSubject()" class="cursor">{{m.nome}}</mat-card-title>
                 <mat-card-subtitle>{{m.prof}}</mat-card-subtitle>
                 <img mat-card-avatar src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png">
                 </mat-card-title-group>
