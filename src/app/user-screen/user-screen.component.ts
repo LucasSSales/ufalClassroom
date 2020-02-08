@@ -54,8 +54,17 @@ export class UserScreenComponent implements OnInit {
 
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      this.codigo = result;
+      //console.log(result);
+      if(type=='create'){
+        this.newMateria = result
+        //cria a materia
+        this.newMateria = ""
+      }else if(type=='register'){
+        this.codigo = result
+        //matricula
+        this.codigo = ""
+      }
+  
     });
   }
 

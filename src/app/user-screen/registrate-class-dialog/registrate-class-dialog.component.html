@@ -1,7 +1,9 @@
 <h1 mat-dialog-title>Matricula</h1>
 <div mat-dialog-content>
-    <mat-label>Insira o Código</mat-label>
-    <input matInput [(ngModel)]="data.codigo">
+    <mat-form-field>
+        <mat-label>Insira o Código</mat-label>
+        <input matInput [(ngModel)]="data.codigo">
+    </mat-form-field>
 </div>
 <div mat-dialog-actions>
   <button mat-button [mat-dialog-close]="data.codigo">Ok</button>
