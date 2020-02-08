@@ -3,13 +3,20 @@
 </div>
 <!-- colocar esse card como componente a parte e depois loopar as materias que ele ta matriculado -->
 <div *ngIf="!loading">
-<div *ngFor="let m of materias" class="cards">
-        <mat-card class="container">
-                <mat-card-title-group>
-                <mat-card-title (click)="openSubject()" class="cursor">{{m.nome}}</mat-card-title>
-                <mat-card-subtitle>{{m.prof}}</mat-card-subtitle>
-                <img mat-card-avatar src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png">
-                </mat-card-title-group>
-        </mat-card>
-</div>
+        <div>
+                <button mat-raised-button (click)="openDialog('create')">Criar uma Turma</button>
+                <button mat-raised-button (click)="openDialog('register')">Se matricular em uma turma existente</button>
+        </div>
+        <mat-grid-list cols="3" gutterSize="100">
+                <!--<mat-grid-tile *ngFor="let m of materias" class="cards">
+                        <mat-card class="container">
+                        <mat-card-title-group>
+                        <mat-card-title (click)="openSubject()" class="cursor">{{m.nome}}</mat-card-title>
+                        <mat-card-subtitle>{{m.prof}}</mat-card-subtitle>
+                        <img mat-card-avatar src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png">
+                        </mat-card-title-group>
+                        </mat-card>
+                </mat-grid-tile>-->
+        </mat-grid-list>
+
 </div>

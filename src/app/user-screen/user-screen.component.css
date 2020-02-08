@@ -1,5 +1,5 @@
 .container{
-    width: 50%;
+    width: 70%;
 }
 
 .cards{
@@ -16,4 +16,8 @@
 
 .top{
     padding-top: 100px;
+}
+
+.col1{
+    background-color: red;
 }
