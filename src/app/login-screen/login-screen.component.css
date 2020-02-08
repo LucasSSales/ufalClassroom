@@ -19,4 +19,10 @@
 .card{
   width: 40%; 
   margin: 0 auto;
+  padding: 20px;
+}
+
+.cadastro{
+  padding-bottom: 10px;
+  font-size: 13px;
 }

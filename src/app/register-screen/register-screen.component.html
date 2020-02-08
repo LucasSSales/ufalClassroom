@@ -1,1 +1,56 @@
-<p>register-screen works!</p>
+<div class="container">
+    <mat-card class="card">
+        <mat-card-title>Cadastro</mat-card-title>
+        <mat-card-content>
+            <form class="inputs">
+                <mat-form-field class="fullWidth">
+                    <input 
+                        matInput 
+                        placeholder="Nome" 
+                        [(ngModel)]="user.first_name" 
+                        [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+                <mat-form-field class="fullWidth">
+                    <input 
+                        matInput 
+                        placeholder="Sobrenome" 
+                        [(ngModel)]="user.last_name" 
+                        [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+                <mat-form-field class="fullWidth">
+                    <input 
+                        matInput 
+                        placeholder="E-mail" 
+                        [(ngModel)]="user.email" 
+                        [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+                <mat-form-field class="fullWidth">
+                    <input 
+                        matInput 
+                        placeholder="Nome de Usuário" 
+                        [(ngModel)]="user.username" 
+                        [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+                <mat-form-field class="fullWidth">
+                    <input 
+                        matInput 
+                        type="password" 
+                        placeholder="Senha" 
+                        [(ngModel)]="user.password" 
+                        [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+
+                <mat-form-field class="fullWidth">
+                    <input 
+                        matInput type="password" 
+                        placeholder="Confirmar Senha" 
+                        [(ngModel)]="confPaswd" 
+                        [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button color="primary" (click)="register()">Cadastrar</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

@@ -18,6 +18,11 @@ import { FormsModule } from '@angular/forms';
 import { RegisterScreenComponent } from './register-screen/register-screen.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CreateClassDialogComponent } from './user-screen/create-class-dialog/create-class-dialog.component';
+import { RegistrateClassDialogComponent } from './user-screen/registrate-class-dialog/registrate-class-dialog.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +32,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ActivityScreenComponent,
     ForumComponent,
     SubjectScreenComponent,
-    RegisterScreenComponent
+    RegisterScreenComponent,
+    CreateClassDialogComponent,
+    RegistrateClassDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -41,8 +48,15 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     FormsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
+    MatGridListModule,
+    MatDialogModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[
+    CreateClassDialogComponent,
+    RegistrateClassDialogComponent
+  ]
 })
 export class AppModule { }
