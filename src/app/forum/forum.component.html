@@ -1,1 +1,50 @@
 <p>forum works!</p>
+<mat-form-field appearance="fill">
+    <mat-label>Digite sua pergunta</mat-label>
+    <textarea
+        matInput
+        [(ngModel)]="newQuestion"
+        rows="4" 
+        cols="50">
+    </textarea>
+</mat-form-field>
+
+<button (click)="createQuestion()">teste</button>
+<h3>Perguntas</h3>
+<mat-accordion>
+    <mat-expansion-panel  *ngFor="let q of forum.questions, index as i" (closed)="yourAnswear = ''" >
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{q.question}}
+            </mat-panel-title>
+            <mat-panel-description *ngIf="q.Owner.username">
+              Autor: {{q.Owner.username}}  {{q.pubDate}}
+            </mat-panel-description>
+
+            <mat-panel-description *ngIf="!q.Owner.username">
+                Autor: {{username}}  {{q.pubDate}}
+            </mat-panel-description>
+
+          </mat-expansion-panel-header>
+      
+          <mat-form-field *ngIf="this.username != q.Owner.username">
+                <mat-label>Digite sua resposta</mat-label>
+                <textarea
+                    matInput
+                    [(ngModel)]="yourAnswear"
+                    rows="2" 
+                    cols="300">
+                </textarea>
+                <button (click)="answearQuestion(q.id, i)">Enviar</button>
+            </mat-form-field>
+
+
+            <mat-panel-description *ngFor="let a of q.answears">
+                <div>{{a.Owner.username}}: {{a.comentary}}</div>
+            </mat-panel-description>
+
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+        </mat-expansion-panel>
+      </mat-accordion>

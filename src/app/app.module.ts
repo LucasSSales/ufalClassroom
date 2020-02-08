@@ -23,6 +23,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CreateClassDialogComponent } from './user-screen/create-class-dialog/create-class-dialog.component';
 import { RegistrateClassDialogComponent } from './user-screen/registrate-class-dialog/registrate-class-dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatExpansionModule } from '@angular/material/expansion';
+
 
 @NgModule({
   declarations: [
@@ -51,6 +54,8 @@ import { RegistrateClassDialogComponent } from './user-screen/registrate-class-d
     MatSnackBarModule,
     MatGridListModule,
     MatDialogModule,
+    MatFormFieldModule,
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

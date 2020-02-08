@@ -19,6 +19,8 @@ export class LoginScreenComponent implements OnInit {
 
   login(){
     console.log(this.usuario, this.senha)
+    localStorage.setItem("username", this.usuario)
+    localStorage.setItem("password", this.senha)
     this.api.getToken({username:this.usuario, password:this.senha}).subscribe(
     data=>{
       console.log(data)

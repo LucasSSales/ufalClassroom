@@ -28,6 +28,10 @@ export class UserScreenComponent implements OnInit {
   ngOnInit() {
     console.log(this.route.toString())
     //this.loading = false
+    this.getClassrooms()
+  }
+
+  getClassrooms(){
     this.api.getClassroom().subscribe(
       data=>{
         console.log(data)
@@ -52,6 +56,8 @@ export class UserScreenComponent implements OnInit {
     this.router.navigateByUrl("/materia")
   }
 
+  //d4d47448-ab48-47dc-8bbb-1042119d5d95
+
   openDialog(type:string){
     var dialogRef;
     if(type=='create'){
@@ -73,6 +79,8 @@ export class UserScreenComponent implements OnInit {
         this.newMateria = result
         this.api.createClass(result).subscribe((data)=>{
           console.log(data)
+          this.loading = true;
+          this.getClassrooms()
         }, 
       (error)=>{
         console.log(error)
@@ -82,6 +90,8 @@ export class UserScreenComponent implements OnInit {
         this.codigo = result
         this.api.registerInClass(result).subscribe(data=>{
           console.log(data)
+          this.loading = true;
+          this.getClassrooms()
         })
         this.codigo = ""
       }

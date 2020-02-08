@@ -25,3 +25,50 @@ export class Token{
 export class Classes{
     list:any[]
 }
+
+export class Question{
+    forum:number;
+    question:string;
+
+    constructor(forum, question){
+        this.forum = forum;
+        this.question = question;
+    }
+}
+
+export class Comentary{
+    question:number;
+    comentary:string;
+}
+
+export class Forum{
+    id:number;
+    name:string;
+    questions:QuestionsSaved[];
+}
+
+export class QuestionsSaved{
+    id: number
+    Owner: Owner
+    owner:number
+    question: string
+    pubDate: string
+    answears: Comentary[]
+
+}
+
+export class Owner{
+    username: string
+    first_name: string
+    last_name: string
+}
+
+export class Answear{
+    id: number;
+    owner: number;
+    Owner:Owner;
+    question: number;
+    comentary: string;
+    pubDate: string;
+    
+}

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Token, User, Classes } from '../models';
+import { Token, User, Classes, Question, Comentary, QuestionsSaved } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +45,7 @@ export class ApiService {
   //cria uma turma nova
   createClass(className){
     const url = 'classroom/';
+    console.log({name:className})
     return this.http.post<any>(this.rooturl+url, {name:className}, this.httpOptions);
   }
 
@@ -53,6 +54,18 @@ export class ApiService {
     const url = `classroom/${classCode}/join/`;
     return this.http.get<any>(this.rooturl+url, this.httpOptions);
   }
+
+  //cria pergunta no forum
+  createQuestion(question:Question){
+    const url='forum/question/'
+    return this.http.post<QuestionsSaved>(this.rooturl+url, question, this.httpOptions)
+  }
+
+    //cria resposta pra pergunta
+    createComentary(comentary:Comentary){
+      const url='forum/comentary/'
+      return this.http.post<any>(this.rooturl+url, comentary, this.httpOptions)
+    }
 
 
 }
