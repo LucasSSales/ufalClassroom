@@ -17,6 +17,8 @@ export class UserScreenComponent implements OnInit {
     {nome:"Linhas", prof:"Arturo"},{nome:"Etica", prof:"Olival"},{nome:"Gestão", prof:"Rafael Amorim"}
   ]
   loading = false;
+  codigo;
+  newMateria;
 
   constructor(private router:Router, private api:ApiService, 
     private route:ActivatedRoute, public dialog: MatDialog) { }
@@ -41,19 +43,19 @@ export class UserScreenComponent implements OnInit {
     if(type=='create'){
       dialogRef = this.dialog.open(CreateClassDialogComponent, {
         width: '250px',
-        //data: {name: this.name, animal: this.animal}
+        data: {nome: this.newMateria}
       });
     }else if(type=='register'){
       dialogRef = this.dialog.open(RegistrateClassDialogComponent, {
         width: '250px',
-        //data: {name: this.name, animal: this.animal}
+        data: {codigo: this.codigo}
       });
     }
 
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      //this.animal = result;
+      this.codigo = result;
     });
   }
 
