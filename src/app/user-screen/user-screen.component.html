@@ -19,4 +19,23 @@
                 </mat-grid-tile>-->
         </mat-grid-list>
 
+        <h1>Turmas em que você é aluno</h1>
+        <div *ngFor="let s of student, index as i">
+                <mat-card class="container">
+                <mat-card-title-group>
+                <mat-card-title (click)="openSubject(this.student, i)" class="cursor">{{s.name}}</mat-card-title>
+                <mat-card-subtitle>Professor: {{s.Owner.first_name}}</mat-card-subtitle>
+                </mat-card-title-group>
+                </mat-card>
+        </div>
+        <h1>Turmas em que você é professor</h1>
+        <div *ngFor="let p of profesor, index as i">
+                <mat-card class="container">
+                <mat-card-title-group>
+                <mat-card-title (click)="openSubject(this.profesor, i)" class="cursor">{{p.name}}</mat-card-title>
+                <mat-card-subtitle></mat-card-subtitle>
+                </mat-card-title-group>
+                </mat-card>
+        </div>
+
 </div>

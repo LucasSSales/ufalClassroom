@@ -50,7 +50,7 @@ export class ApiService {
 
   //Matricula o user em uma turma
   registerInClass(classCode){
-    const url = `classroom//${classCode}/join/`;
+    const url = `classroom/${classCode}/join/`;
     return this.http.get<any>(this.rooturl+url, this.httpOptions);
   }
 

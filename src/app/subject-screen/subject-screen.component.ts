@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubjectScreenComponent implements OnInit {
 
+  data;
+
   constructor() { }
 
   ngOnInit() {
+    this.data = JSON.parse(localStorage.getItem("materia"))
+    console.log(this.data)
+    
   }
 
 }

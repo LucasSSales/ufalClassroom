@@ -16,9 +16,11 @@ export class UserScreenComponent implements OnInit {
     {nome:"Linhas", prof:"Arturo"},{nome:"Etica", prof:"Olival"},{nome:"Gestão", prof:"Rafael Amorim"},
     {nome:"Linhas", prof:"Arturo"},{nome:"Etica", prof:"Olival"},{nome:"Gestão", prof:"Rafael Amorim"}
   ]
-  loading = false;
+  loading = true;
   codigo;
   newMateria;
+  student = []
+  profesor = []
 
   constructor(private router:Router, private api:ApiService, 
     private route:ActivatedRoute, public dialog: MatDialog) { }
@@ -29,12 +31,24 @@ export class UserScreenComponent implements OnInit {
     this.api.getClassroom().subscribe(
       data=>{
         console.log(data)
+        this.profesor = data
+        this.loading = false;
+      },
+    );
+
+    this.api.getClassroomStudent().subscribe(
+      data=>{
+        console.log(data)
+        this.student = data
         this.loading = false;
       },
     );
   }
 
-  openSubject(){
+  openSubject(list, idx){
+    //console.log(list[idx])
+    localStorage.setItem("materia", JSON.stringify(list[idx]))
+    //console.log(localStorage.getItem("materia"))
     this.router.navigateByUrl("/materia")
   }
 
@@ -57,11 +71,18 @@ export class UserScreenComponent implements OnInit {
       //console.log(result);
       if(type=='create'){
         this.newMateria = result
-        //cria a materia
+        this.api.createClass(result).subscribe((data)=>{
+          console.log(data)
+        }, 
+      (error)=>{
+        console.log(error)
+      })
         this.newMateria = ""
       }else if(type=='register'){
         this.codigo = result
-        //matricula
+        this.api.registerInClass(result).subscribe(data=>{
+          console.log(data)
+        })
         this.codigo = ""
       }
   
