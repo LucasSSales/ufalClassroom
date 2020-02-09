@@ -67,5 +67,10 @@ export class ApiService {
       return this.http.post<any>(this.rooturl+url, comentary, this.httpOptions)
     }
 
+  createPost(post){
+    const url='posts/post/'
+    return this.http.post<any>(this.rooturl+url, post, this.httpOptions)
+  }
+
 
 }
