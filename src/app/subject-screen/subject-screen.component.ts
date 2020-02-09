@@ -13,6 +13,7 @@ export class SubjectScreenComponent implements OnInit {
   data;
   username = localStorage.getItem("username");
   postagem:string;
+  files: Set<File>
 
   constructor(private router:Router, private api:ApiService) { }
 
@@ -40,6 +41,39 @@ export class SubjectScreenComponent implements OnInit {
         this.postagem = ""
       }
     )
+  }
+
+  getFile(event){
+    //console.log(event.srcElement.files)
+    const selectedFiles = <FileList>event.srcElement.files
+    this.files = new Set()
+    //console.log(selectedFiles)
+    for(let f in selectedFiles) {
+      //console.log(selectedFiles[f])
+      this.files.add(selectedFiles[f])
+    };
+    //console.log(this.files)
+  }
+
+  uploadFiles(){
+    //console.log(this.files.size)
+    var formdata = new FormData()
+    var i = 0
+    for(let file of this.files){
+      console.log(i)
+      formdata.append('file', file, file.name)
+      i++;
+      if(i>=this.files.size-2) break
+    }
+    console.log(formdata)
+    this.api.createPost(formdata).subscribe(data=>{
+      console.log("bom")
+      console.log(data)
+    },
+  error=>{
+    console.log("ruim")
+    console.log(error)
+  })
   }
 
 }

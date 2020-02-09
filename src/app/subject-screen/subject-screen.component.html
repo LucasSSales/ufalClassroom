@@ -18,7 +18,8 @@
 
     <form>
         <div class="form-group">
-            <input type="file" class="form-control-file">
+            <input type="file" class="form-control-file" (change)="getFile($event)" multiple>
+            <button [disabled]="!files" mat-button mat-raised-button (click)="uploadFiles()">Upload</button>
         </div>
     </form>
 
