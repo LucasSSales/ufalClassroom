@@ -97,3 +97,10 @@ export class Classroom{
     posts:Post[];
     activities:Activity[];
 }
+
+export class FileToSave{
+    id:number;
+    post;
+    filename:string;
+    binary:string;
+}

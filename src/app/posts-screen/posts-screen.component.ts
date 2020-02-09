@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-posts-screen',
@@ -62,15 +63,20 @@ export class PostsScreenComponent implements OnInit {
     //console.log(this.files)
   }
 
+  bs:string
+
   _handleReaderLoaded(readerEvt) {
     var binaryString = readerEvt.target.result;
+    this.bs = binaryString
     this.filestring = btoa(binaryString);  // Converting binary string data.
-    console.log(this.filestring)
+    //console.log(binaryString == atob(this.filestring))
 }
 
   uploadFiles(){
-    //console.log(this.files.size)
-    var formdata = new FormData()
+    //console.log(this.filestring)
+    //console.log(this.bs)
+    this.saveFile(this.filestring)
+    /*var formdata = new FormData()
     var i = 0
     for(let file of this.files){
       console.log(i)
@@ -86,7 +92,15 @@ export class PostsScreenComponent implements OnInit {
   error=>{
     console.log("ruim")
     console.log(error)
-  })
+  })*/
+  }
+
+  saveFile(content){
+    //console.log(typeof(content))
+    var blob = new Blob([content], {type: "image/jpeg;base64"});
+    //var file = new File([content], "maki.jpg", {type: "image/jpeg;charset=utf-8"});
+   // FileSaver.saveAs("https://vignette.wikia.nocookie.net/fire-brigade-of-flames/images/8/82/Maki_Oze.png/revision/latest/scale-to-width-down/340?cb=20190317122533", "maki.jpg");
+    saveAs(blob, "maki.jpg", {autoBom : true})
   }
 
 }
