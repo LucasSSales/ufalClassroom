@@ -25,6 +25,8 @@ import { CreateClassDialogComponent } from './user-screen/create-class-dialog/cr
 import { RegistrateClassDialogComponent } from './user-screen/registrate-class-dialog/registrate-class-dialog.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTabsModule } from '@angular/material/tabs';
+import { PostsScreenComponent } from './posts-screen/posts-screen.component';
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     SubjectScreenComponent,
     RegisterScreenComponent,
     CreateClassDialogComponent,
-    RegistrateClassDialogComponent
+    RegistrateClassDialogComponent,
+    PostsScreenComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatDialogModule,
     MatFormFieldModule,
     MatExpansionModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

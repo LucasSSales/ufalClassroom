@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Forum, Question, QuestionsSaved, Owner } from '../models';
-import { runInThisContext } from 'vm';
 import { ApiService } from '../services/api.service';
 
 @Component({

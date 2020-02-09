@@ -1,34 +1,11 @@
 <div class="top">
     <h1>{{data.name}}</h1>
 </div>
-<button (click)="goToForum()">Forum</button>
-<div class="container">
-    <div class="body">
-    <div *ngIf="data.Owner.username == username" >
-            <mat-form-field appearance="standard" class="createPost">
-                    <mat-label>Escreva aqui</mat-label>
-                    <textarea
-                        matInput
-                        [(ngModel)]="postagem"
-                        rows="4" >
-                    </textarea>
-                </mat-form-field>
-                <button mat-button mat-raised-button (click)="post()">Postar</button>
-    </div>
 
-    <form>
-        <div class="form-group">
-            <input type="file" class="form-control-file" (change)="getFile($event)" multiple>
-            <button [disabled]="!files" mat-button mat-raised-button (click)="uploadFiles()">Upload</button>
-        </div>
-    </form>
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Postagens"><app-posts-screen></app-posts-screen></mat-tab>
+    <mat-tab label="Atividades"><app-activity-screen></app-activity-screen></mat-tab>
+    <mat-tab label="Forum?"><app-forum></app-forum></mat-tab>
+</mat-tab-group>
 
-    <div  *ngFor="let p of data.posts, index as i">
-            <mat-card>
-            <mat-card-content>{{p.text}}</mat-card-content>
-            <mat-card-footer>{{p.pubDate}}</mat-card-footer>
-            </mat-card>
-            
-    </div>
-    </div>
-</div>
+

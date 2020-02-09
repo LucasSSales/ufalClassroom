@@ -72,3 +72,28 @@ export class Answear{
     pubDate: string;
     
 }
+
+export class Post{
+    id:number;
+    text:string;
+    pubDate:string;
+    files:File[]
+}
+
+export class Activity{
+    id: number;
+    classroom: number;
+    text: string;
+    pubDate: string;
+    deadline: string;
+}
+
+export class Classroom{
+    Owner:Owner;
+    Forum:Forum;
+    name:string;
+    uniqueCode:string;
+    users:User[];
+    posts:Post[];
+    activities:Activity[];
+}

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
-import { Owner } from '../models';
 
 @Component({
-  selector: 'app-subject-screen',
-  templateUrl: './subject-screen.component.html',
-  styleUrls: ['./subject-screen.component.css']
+  selector: 'app-posts-screen',
+  templateUrl: './posts-screen.component.html',
+  styleUrls: ['./posts-screen.component.css']
 })
-export class SubjectScreenComponent implements OnInit {
+export class PostsScreenComponent implements OnInit {
+
 
   data;
   username = localStorage.getItem("username");
@@ -88,20 +88,5 @@ export class SubjectScreenComponent implements OnInit {
     console.log(error)
   })
   }
-
-  /*onFileChange(event) {
-    let reader = new FileReader();
-    if(event.target.files && event.target.files.length > 0) {
-      let file = event.target.files[0];
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        this.form.get('avatar').setValue({
-          filename: file.name,
-          filetype: file.type,
-          value: reader.result.split(',')[1]
-        })
-      };
-    }
-  }*/
 
 }
