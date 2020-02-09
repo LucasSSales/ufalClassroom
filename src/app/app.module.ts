@@ -27,7 +27,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 import { PostsScreenComponent } from './posts-screen/posts-screen.component';
-
+import { ActivityDetailsComponent } from './activity-screen/activity-details/activity-details.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { PostsScreenComponent } from './posts-screen/posts-screen.component';
     RegisterScreenComponent,
     CreateClassDialogComponent,
     RegistrateClassDialogComponent,
-    PostsScreenComponent
+    PostsScreenComponent,
+    ActivityDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +62,7 @@ import { PostsScreenComponent } from './posts-screen/posts-screen.component';
     MatFormFieldModule,
     MatExpansionModule,
     MatTabsModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

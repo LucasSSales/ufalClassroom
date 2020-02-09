@@ -1,1 +1,35 @@
-<p>activity-screen works!</p>
+<div class="container">
+    <div class="body">
+    <!--<div *ngIf="data.Owner.username == username" >
+            <mat-form-field appearance="standard" class="createPost">
+                    <mat-label>Escreva aqui</mat-label>
+                    <textarea
+                        matInput
+                        [(ngModel)]="postagem"
+                        rows="4" >
+                    </textarea>
+                </mat-form-field>
+                <button mat-button mat-raised-button (click)="post()">Postar</button>
+    </div>
+
+    <form>
+        <div class="form-group">
+            <input type="file" class="form-control-file" (change)="getFile($event)" multiple>
+            <button [disabled]="!files" mat-button mat-raised-button (click)="uploadFiles()">Upload</button>
+        </div>
+    </form>-->
+
+    <div  *ngFor="let a of data.activities, index as i">
+            <mat-card (click)="details(a)" class="cursor">
+                <mat-card-title-group>
+                    <mat-card-title>{{a.text}}</mat-card-title>
+                    <mat-card-subtitle>Prazo: {{a.deadline}}</mat-card-subtitle>
+                    <mat-icon aria-hidden="false" aria-label="Example home icon">assignment</mat-icon>
+                </mat-card-title-group>
+            
+            <mat-card-content></mat-card-content>
+            </mat-card>
+            
+    </div>
+    </div>
+</div>

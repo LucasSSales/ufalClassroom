@@ -32,12 +32,14 @@ export class ApiService {
 
   //pega as turmas onde o user é o professor
   getClassroom(){
+    console.log(localStorage.getItem("token"))
     const url = 'classroom/';
     return this.http.get<any>(this.rooturl+url, this.httpOptions)
   }
 
   //pega as turmas em que o user é um aluno
   getClassroomStudent(){
+    console.log(localStorage.getItem("token"))
     const url = 'classroom/student/';
     return this.http.get<any>(this.rooturl+url, this.httpOptions)
   }
@@ -71,6 +73,23 @@ export class ApiService {
     const url='posts/post/'
     return this.http.post<any>(this.rooturl+url, post, this.httpOptions)
   }
+
+  createActivity(activity){
+    const url='activity/'
+    return this.http.post<any>(this.rooturl+url, activity, this.httpOptions)
+  }
+
+  answerActivity(answer){
+    const url = 'answer/'
+    return this.http.post<any>(this.rooturl+url, answer, this.httpOptions)
+  }
+
+  setScore(activityId, score){
+    const url = `activity/${activityId}/setscore/`
+    return this.http.post<any>(this.rooturl+url, score, this.httpOptions)
+  }
+
+  
 
 
 }

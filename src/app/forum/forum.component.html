@@ -1,15 +1,15 @@
-<p>forum works!</p>
-<mat-form-field appearance="fill">
+<div class="container">
+<mat-form-field appearance="fill"  class="textarea">
     <mat-label>Digite sua pergunta</mat-label>
     <textarea
         matInput
         [(ngModel)]="newQuestion"
-        rows="4" 
-        cols="50">
+        rows="4"
+       >
     </textarea>
 </mat-form-field>
 
-<button (click)="createQuestion()">teste</button>
+<button mat-button mat-raised-button (click)="createQuestion()">Enviar</button>
 <h3>Perguntas</h3>
 <mat-accordion>
     <mat-expansion-panel  *ngFor="let q of forum.questions, index as i" (closed)="yourAnswear = ''" >
@@ -48,3 +48,6 @@
                              (closed)="panelOpenState = false">
         </mat-expansion-panel>
       </mat-accordion>
+
+
+</div>

@@ -6,15 +6,15 @@ import { UserScreenComponent } from './user-screen/user-screen.component';
 import { SubjectScreenComponent } from './subject-screen/subject-screen.component';
 import { RegisterScreenComponent } from './register-screen/register-screen.component';
 import { ForumComponent } from './forum/forum.component';
+import { ActivityDetailsComponent } from './activity-screen/activity-details/activity-details.component';
 
 
 const routes: Routes = [
   {path:'', component:LoginScreenComponent},
   {path:'cadastro', component:RegisterScreenComponent},
   {path:'home', component:UserScreenComponent},
-  {path:'atividade', component:ActivityScreenComponent},
+  {path:'atividade', component:ActivityDetailsComponent},
   {path:'materia', component:SubjectScreenComponent},
-  {path:'forum', component:ForumComponent}
 ];
 
 @NgModule({

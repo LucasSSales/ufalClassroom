@@ -12,10 +12,6 @@ import { RegistrateClassDialogComponent } from './registrate-class-dialog/regist
 })
 export class UserScreenComponent implements OnInit {
 
-  materias = [
-    {nome:"Linhas", prof:"Arturo"},{nome:"Etica", prof:"Olival"},{nome:"Gestão", prof:"Rafael Amorim"},
-    {nome:"Linhas", prof:"Arturo"},{nome:"Etica", prof:"Olival"},{nome:"Gestão", prof:"Rafael Amorim"}
-  ]
   loading = true;
   codigo;
   newMateria;
@@ -27,11 +23,11 @@ export class UserScreenComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.route.toString())
-    //this.loading = false
     this.getClassrooms()
   }
 
   getClassrooms(){
+    console.log(localStorage.getItem("token"))
     this.api.getClassroom().subscribe(
       data=>{
         console.log(data)
@@ -48,6 +44,7 @@ export class UserScreenComponent implements OnInit {
       },
     );
   }
+
 
   openSubject(list, idx){
     //console.log(list[idx])

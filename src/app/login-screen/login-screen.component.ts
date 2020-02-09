@@ -15,6 +15,7 @@ export class LoginScreenComponent implements OnInit {
   constructor(private api:ApiService, private router:Router) { }
 
   ngOnInit() {
+    console.log(localStorage)
   }
 
   login(){
@@ -26,6 +27,7 @@ export class LoginScreenComponent implements OnInit {
       console.log(data)
       localStorage.setItem("token", data.token)
       this.router.navigateByUrl("/home")
+      //location.reload()
     }, 
     
     error=>{

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationCancel, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,20 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AppComponent {
   title = 'ufalClassroom';
-  constructor(private route:ActivatedRoute){
-    //console.log(this.route.params.)
+  isLogged=false;
+  constructor(private route:ActivatedRoute, private router:Router){
+    if(localStorage.getItem("username")!=null){
+      this.isLogged = true
+    }
+  }
+
+  logout(){
+    localStorage.removeItem("username")
+    localStorage.removeItem("password")
+    localStorage.removeItem("materia")
+    localStorage.removeItem("token")
+    localStorage.removeItem("selectedActivity")
+    this.router.navigateByUrl("/")
+    this.isLogged = false;
   }
 }

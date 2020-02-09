@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Classroom } from '../models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-activity-screen',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActivityScreenComponent implements OnInit {
 
-  constructor() { }
+  data:Classroom;
+  username = localStorage.getItem("username");
+
+  constructor(private router:Router) { }
 
   ngOnInit() {
+    console.log("yo")
+    this.data = JSON.parse(localStorage.getItem("materia"))
+    console.log(this.data)
+  }
+
+  details(activity){
+    localStorage.setItem("selectedActivity", JSON.stringify(activity))
+    this.router.navigateByUrl("/atividade")
   }
 
 }
