@@ -1,3 +1,32 @@
 .detail{
     width:90%;
+    padding:15px
+}
+
+.container{
+    padding:30px;
+}
+
+.listItem{
+    margin-bottom: 50px;
+}
+
+.interno{
+    margin-top: 30px;
+    display: flex;
+}
+
+.textoInterno{
+    text-align: left
+}
+
+.iconDiv{
+    position: absolute;
+    right: 30px;
+}
+
+.icon{
+    height: 100px;
+    font-size: 50px;
+    cursor: pointer;
 }

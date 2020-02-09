@@ -1,3 +1,7 @@
 .cursor{
     cursor: pointer;
 }
+
+.body{
+    padding: 15px;
+}

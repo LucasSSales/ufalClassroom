@@ -22,6 +22,7 @@ export class ActivityScreenComponent implements OnInit {
 
   details(activity){
     localStorage.setItem("selectedActivity", JSON.stringify(activity))
+    localStorage.setItem("isOwner", ""+(this.data.Owner.username == this.username))
     this.router.navigateByUrl("/atividade")
   }
 

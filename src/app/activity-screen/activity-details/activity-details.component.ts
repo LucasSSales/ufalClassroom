@@ -9,12 +9,20 @@ import { Activity } from '../../models';
 export class ActivityDetailsComponent implements OnInit {
 
   activity:Activity;
+  isOwner = localStorage.getItem("isOwner");
+  comment:string
 
   constructor() { }
 
   ngOnInit() {
     this.activity = JSON.parse(localStorage.getItem("selectedActivity"))
+    
     console.log(this.activity)
+    console.log(this.isOwner)
+  }
+
+  downloadFile(){
+    console.log("quem sabe um dia")
   }
 
 }

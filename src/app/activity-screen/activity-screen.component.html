@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="body">
+    <div >
     <!--<div *ngIf="data.Owner.username == username" >
             <mat-form-field appearance="standard" class="createPost">
                     <mat-label>Escreva aqui</mat-label>
@@ -19,7 +19,7 @@
         </div>
     </form>-->
 
-    <div  *ngFor="let a of data.activities, index as i">
+    <div  *ngFor="let a of data.activities, index as i" class="body">
             <mat-card (click)="details(a)" class="cursor">
                 <mat-card-title-group>
                     <mat-card-title>{{a.text}}</mat-card-title>

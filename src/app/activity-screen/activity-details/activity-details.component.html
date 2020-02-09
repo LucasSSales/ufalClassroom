@@ -1,11 +1,51 @@
-<div>
+<div class="container">
     <mat-card class="detail">
         <mat-card-title-group>
             <mat-card-title>{{activity.text}}</mat-card-title>
             <mat-card-subtitle>Prazo: {{activity.deadline}}</mat-card-subtitle>
-            <mat-icon aria-hidden="false" aria-label="Example home icon">assignment</mat-icon>
         </mat-card-title-group>
             
-    <mat-card-content></mat-card-content>
+    <mat-card-content *ngIf="isOwner=='false'">
+        Envie aqui seus arquivos
+        <form>
+                <mat-form-field appearance="standard" class="createPost">
+                        <mat-label>Escreva aqui</mat-label>
+                        <textarea
+                            matInput
+                            [(ngModel)]="comment"
+                            [ngModelOptions]="{standalone: true}"
+                            rows="4" >
+                        </textarea>
+                    </mat-form-field>
+                <div class="form-group">
+                    <input type="file" class="form-control-file" (change)="getFile($event)" multiple>
+                    <button [disabled]="!files" mat-button mat-raised-button (click)="uploadFiles()">Upload</button>
+                </div>
+            </form>
+    </mat-card-content>
+
+    <mat-card-content *ngIf="isOwner=='true'">
+            Respostas enviadas
+            <mat-list>
+                
+                <div *ngFor="let ans of activity.answers">
+                        <mat-divider></mat-divider>
+                <mat-list-item class="listItem">
+                    <div class="interno">
+                        <div class="textoInterno">
+                        <span>Enviado por: {{ ans.Owner.first_name }}  {{ ans.Owner.last_name }}</span>
+                        <br>Comentários: {{ ans.comentary }}</div>
+                        <div class="iconDiv" *ngIf="ans.files.length>0">
+                            <mat-icon class="icon" aria-hidden="false" 
+                            aria-label="Example home icon">assignment</mat-icon>
+                        </div>
+                    </div>
+                </mat-list-item>
+                
+                </div>
+                <mat-divider></mat-divider>
+
+            </mat-list>
+    </mat-card-content>
     </mat-card>
 </div>
