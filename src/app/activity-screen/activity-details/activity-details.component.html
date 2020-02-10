@@ -4,9 +4,10 @@
             <mat-card-title>{{activity.text}}</mat-card-title>
             <mat-card-subtitle>Prazo: {{activity.deadline}}</mat-card-subtitle>
         </mat-card-title-group>
-            
-    <mat-card-content *ngIf="isOwner=='false'">
-        Envie aqui seus arquivos
+         
+    <div *ngIf="isOwner=='false'">
+    <mat-card-content *ngIf="!loading">
+        Envie sua resposta
         <form>
                 <mat-form-field appearance="standard" class="createPost">
                         <mat-label>Escreva aqui</mat-label>
@@ -19,12 +20,20 @@
                     </mat-form-field>
                 <div class="form-group">
                     <input type="file" class="form-control-file" (change)="getFile($event)" multiple>
-                    <button [disabled]="!files" mat-button mat-raised-button (click)="uploadFiles()">Upload</button>
+                    
                 </div>
             </form>
     </mat-card-content>
-
-    <mat-card-content *ngIf="isOwner=='true'">
+    <mat-card-actions *ngIf="!loading">
+            <button [disabled]="!files" mat-button mat-raised-button (click)="uploadFiles()">Upload</button>
+            <button mat-button mat-raised-button (click)="sendAnswer()">Enviar</button>
+    </mat-card-actions>
+    <div *ngIf="loading">
+            <mat-spinner></mat-spinner>
+    </div>
+    </div>
+<div *ngIf="isOwner=='true'">
+    <mat-card-content >
             Respostas enviadas
             <mat-list>
                 
@@ -47,5 +56,6 @@
 
             </mat-list>
     </mat-card-content>
+</div>
     </mat-card>
 </div>

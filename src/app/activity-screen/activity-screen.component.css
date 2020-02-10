@@ -5,3 +5,8 @@
 .body{
     padding: 15px;
 }
+
+.createPost{
+    margin: 0 auto;
+    width:100%;
+}

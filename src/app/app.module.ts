@@ -31,6 +31,8 @@ import { ActivityDetailsComponent } from './activity-screen/activity-details/act
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatDatepickerModule,   } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -67,8 +69,10 @@ import { MatDividerModule } from '@angular/material/divider';
     MatIconModule,
     MatListModule,
     MatDividerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
-  providers: [],
+  providers: [MatNativeDateModule],
   bootstrap: [AppComponent],
   entryComponents:[
     CreateClassDialogComponent,

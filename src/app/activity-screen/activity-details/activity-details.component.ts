@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Activity } from '../../models';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-activity-details',
@@ -11,8 +12,9 @@ export class ActivityDetailsComponent implements OnInit {
   activity:Activity;
   isOwner = localStorage.getItem("isOwner");
   comment:string
+  loading = false
 
-  constructor() { }
+  constructor(private api:ApiService) { }
 
   ngOnInit() {
     this.activity = JSON.parse(localStorage.getItem("selectedActivity"))
@@ -23,6 +25,22 @@ export class ActivityDetailsComponent implements OnInit {
 
   downloadFile(){
     console.log("quem sabe um dia")
+  }
+
+  sendAnswer(){
+    this.loading = true
+    var ans = {
+      activity: this.activity.id,
+      comentary: this.comment,
+      files: []
+    }
+    this.api.answerActivity(ans).subscribe(
+      (data)=>{
+        console.log(data)
+        this.loading = false;
+        this.comment = ""
+      }
+    )
   }
 
 }

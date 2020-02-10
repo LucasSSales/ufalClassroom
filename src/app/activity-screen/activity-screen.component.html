@@ -1,23 +1,34 @@
 <div class="container">
     <div >
-    <!--<div *ngIf="data.Owner.username == username" >
-            <mat-form-field appearance="standard" class="createPost">
-                    <mat-label>Escreva aqui</mat-label>
-                    <textarea
-                        matInput
-                        [(ngModel)]="postagem"
-                        rows="4" >
-                    </textarea>
-                </mat-form-field>
-                <button mat-button mat-raised-button (click)="post()">Postar</button>
+    <div *ngIf="data.Owner.username == username" >
+        <mat-card>
+            <mat-card-actions>
+                <mat-card-content>
+                    <mat-form-field appearance="standard" class="createPost">
+                        <mat-label>Escreva uma atividade</mat-label>
+                        <textarea matInput [(ngModel)]="text" rows="4" ></textarea>
+                    </mat-form-field>
+                    <mat-form-field>
+                            <mat-label>Defina o prazo</mat-label>
+                           <input matInput [matDatepicker]="picker" [(ngModel)]="date" (ngModelChange)="convertDate()">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                          </mat-form-field>
+                    <form>
+                        <div class="form-group">
+                            <input type="file" class="form-control-file" (change)="getFile($event)" multiple>
+                        </div>
+                    </form>
+
+                    </mat-card-content>
+                <button [disabled]="!files" mat-button mat-raised-button (click)="uploadFiles()">Upload</button>
+                <button mat-button mat-raised-button (click)="createActivity()">Postar</button>
+            </mat-card-actions>
+        </mat-card>
+
+                
     </div>
 
-    <form>
-        <div class="form-group">
-            <input type="file" class="form-control-file" (change)="getFile($event)" multiple>
-            <button [disabled]="!files" mat-button mat-raised-button (click)="uploadFiles()">Upload</button>
-        </div>
-    </form>-->
 
     <div  *ngFor="let a of data.activities, index as i" class="body">
             <mat-card (click)="details(a)" class="cursor">
