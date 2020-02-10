@@ -75,24 +75,31 @@ export class UserScreenComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       //console.log(result);
       if(type=='create'){
-        this.newMateria = result
-        this.api.createClass(result).subscribe((data)=>{
-          console.log(data)
-          this.loading = true;
-          this.getClassrooms(localStorage.getItem("token"))
-        }, 
-      (error)=>{
-        console.log(error)
-      })
+          console.log(result)
+        if(result){
+            this.newMateria = result
+            this.api.createClass(result).subscribe((data)=>{
+              console.log(data)
+              this.loading = true;
+              this.getClassrooms(localStorage.getItem("token"))
+            }, 
+          (error)=>{
+            console.log(error)
+          })
+        }
+
         this.newMateria = ""
       }else if(type=='register'){
-        this.codigo = result
-        this.api.registerInClass(result).subscribe(data=>{
-          console.log(data)
-          this.loading = true;
-          this.getClassrooms(localStorage.getItem("token"))
-        })
-        this.codigo = ""
+        if(result){
+            this.codigo = result
+            this.api.registerInClass(result).subscribe(data=>{
+              console.log(data)
+              this.loading = true;
+              this.getClassrooms(localStorage.getItem("token"))
+            })
+            this.codigo = ""
+        }
+
       }
   
     });
