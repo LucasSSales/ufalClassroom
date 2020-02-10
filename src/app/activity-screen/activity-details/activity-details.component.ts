@@ -13,6 +13,8 @@ export class ActivityDetailsComponent implements OnInit {
   isOwner = localStorage.getItem("isOwner");
   comment:string
   loading = false
+  files: Set<File>;
+  filestring;
 
   constructor(private api:ApiService) { }
 
@@ -51,5 +53,20 @@ export class ActivityDetailsComponent implements OnInit {
       }
     )
   }
+
+  getFile(event){
+    //console.log(event.target.files[0].name)
+    this.files = event.target.files
+
+    var reader = new FileReader()
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsBinaryString(this.files[0]);
+    //console.log(reader)
+  }
+
+  _handleReaderLoaded(readerEvt) {
+    var binaryString = readerEvt.target.result;
+    this.filestring = btoa(binaryString);  // Converting binary string data.
+    }
 
 }

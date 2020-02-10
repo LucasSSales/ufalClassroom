@@ -13,7 +13,9 @@ export class ActivityScreenComponent implements OnInit {
   data:Classroom;
   username = localStorage.getItem("username");
   text:string;
-  date
+  date;
+  files: Set<File>;
+  filestring;
 
   constructor(private router:Router, private api:ApiService) { }
 
@@ -33,6 +35,21 @@ export class ActivityScreenComponent implements OnInit {
     localStorage.setItem("isOwner", ""+(this.data.Owner.username == this.username))
     this.router.navigateByUrl("/atividade")
   }
+
+  getFile(event){
+    //console.log(event.target.files[0].name)
+    this.files = event.target.files
+
+    var reader = new FileReader()
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsBinaryString(this.files[0]);
+    //console.log(reader)
+  }
+
+  _handleReaderLoaded(readerEvt) {
+    var binaryString = readerEvt.target.result;
+    this.filestring = btoa(binaryString);  // Converting binary string data.
+    }
 
   createActivity(){
     var act = {
