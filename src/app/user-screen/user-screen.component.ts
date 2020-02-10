@@ -75,7 +75,7 @@ export class UserScreenComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       //console.log(result);
       if(type=='create'){
-          console.log(result)
+          //console.log(result)
         if(result){
             this.newMateria = result
             this.api.createClass(result).subscribe((data)=>{
@@ -86,9 +86,10 @@ export class UserScreenComponent implements OnInit {
           (error)=>{
             console.log(error)
           })
+          this.newMateria = ""
         }
 
-        this.newMateria = ""
+        
       }else if(type=='register'){
         if(result){
             this.codigo = result

@@ -16,6 +16,7 @@ export class PostsScreenComponent implements OnInit {
   postagem:string;
   files: Set<File>
   filestring;
+  teste = ""
 
   constructor(private router:Router, private api:ApiService) { }
 
@@ -30,7 +31,10 @@ export class PostsScreenComponent implements OnInit {
   }
 
   post(){
-    var newPost = {text: this.postagem, classroom: this.data.uniqueCode}
+      //console.log(this.filestring)
+    var newPost = {text: this.postagem, classroom: this.data.uniqueCode, files: [
+        {filename:this.files[0].name, binary:this.filestring}
+    ]}
     console.log(newPost)
     this.api.createPost(newPost).subscribe(
       (data)=>{
@@ -46,8 +50,9 @@ export class PostsScreenComponent implements OnInit {
   }
 
   getFile(event){
-    console.log(event.target.files)
+    console.log(event.target.files[0].name)
     this.files = event.target.files
+
     var reader = new FileReader()
     reader.onload = this._handleReaderLoaded.bind(this);
     reader.readAsBinaryString(this.files[0]);
@@ -69,38 +74,6 @@ export class PostsScreenComponent implements OnInit {
     var binaryString = readerEvt.target.result;
     this.bs = binaryString
     this.filestring = btoa(binaryString);  // Converting binary string data.
-    //console.log(binaryString == atob(this.filestring))
 }
-
-  uploadFiles(){
-    //console.log(this.filestring)
-    //console.log(this.bs)
-    this.saveFile(this.filestring)
-    /*var formdata = new FormData()
-    var i = 0
-    for(let file of this.files){
-      console.log(i)
-      formdata.append('file', file, file.name)
-      i++;
-      if(i>=this.files.size-2) break
-    }
-    console.log(formdata)
-    this.api.createPost(formdata).subscribe(data=>{
-      console.log("bom")
-      console.log(data)
-    },
-  error=>{
-    console.log("ruim")
-    console.log(error)
-  })*/
-  }
-
-  saveFile(content){
-    //console.log(typeof(content))
-    var blob = new Blob([content], {type: "image/jpeg;base64"});
-    //var file = new File([content], "maki.jpg", {type: "image/jpeg;charset=utf-8"});
-   // FileSaver.saveAs("https://vignette.wikia.nocookie.net/fire-brigade-of-flames/images/8/82/Maki_Oze.png/revision/latest/scale-to-width-down/340?cb=20190317122533", "maki.jpg");
-    saveAs(blob, "maki.jpg", {autoBom : true})
-  }
 
 }
