@@ -1,3 +1,4 @@
+<app-menu-bar></app-menu-bar>
 <div class="container">
     <mat-card class="detail">
         <mat-card-title-group>
@@ -37,13 +38,21 @@
             Respostas enviadas
             <mat-list>
                 
-                <div *ngFor="let ans of activity.answers">
+                <div *ngFor="let ans of activity.answers, index as i">
                         <mat-divider></mat-divider>
                 <mat-list-item class="listItem">
                     <div class="interno">
                         <div class="textoInterno">
                         <span>Enviado por: {{ ans.Owner.first_name }}  {{ ans.Owner.last_name }}</span>
                         <br>Comentários: {{ ans.comentary }}</div>
+                        <div class="iconDiv">
+                            <form class="example-form">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Digite a Nota</mat-label>
+                                    <input matInput type="number" [(ngModel)]="ans.score">
+                                </mat-form-field>
+                            </form>
+                        </div>
                         <div class="iconDiv" *ngIf="ans.files.length>0">
                             <mat-icon class="icon" aria-hidden="false" 
                             aria-label="Example home icon">assignment</mat-icon>

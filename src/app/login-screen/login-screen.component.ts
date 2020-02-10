@@ -16,6 +16,9 @@ export class LoginScreenComponent implements OnInit {
 
   ngOnInit() {
     console.log(localStorage)
+    if(localStorage.getItem("username") != null){
+      this.router.navigateByUrl("/home")
+    }
   }
 
   login(){

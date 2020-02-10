@@ -15,13 +15,5 @@ export class AppComponent {
     }
   }
 
-  logout(){
-    localStorage.removeItem("username")
-    localStorage.removeItem("password")
-    localStorage.removeItem("materia")
-    localStorage.removeItem("token")
-    localStorage.removeItem("selectedActivity")
-    this.router.navigateByUrl("/")
-    this.isLogged = false;
-  }
+
 }

@@ -33,6 +33,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDatepickerModule,   } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MenuBarComponent } from './menu-bar/menu-bar.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     CreateClassDialogComponent,
     RegistrateClassDialogComponent,
     PostsScreenComponent,
-    ActivityDetailsComponent
+    ActivityDetailsComponent,
+    MenuBarComponent
   ],
   imports: [
     BrowserModule,

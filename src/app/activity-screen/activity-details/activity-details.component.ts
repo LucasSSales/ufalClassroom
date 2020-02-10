@@ -43,4 +43,12 @@ export class ActivityDetailsComponent implements OnInit {
     )
   }
 
+  /*score(){
+    this.api.setScore().subscribe(){
+      (data)=>{
+        console.log(data)
+      }
+    }
+  }*/
+
 }
