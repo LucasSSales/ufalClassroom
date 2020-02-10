@@ -19,6 +19,7 @@ export class ApiService {
   constructor(private http:HttpClient) { }
 
   getToken(user){
+    console.log("user")
     console.log(user)
     const url = 'token/';
     return this.http.post<Token>(this.rooturl + url, user)
@@ -31,15 +32,21 @@ export class ApiService {
   }
 
   //pega as turmas onde o user é o professor
-  getClassroom(){
-    console.log(localStorage.getItem("token"))
+  getClassroom(token){
+    this.httpOptions.headers = this.httpOptions.headers.set("Authorization", "JWT " + token)
+    console.log('TOKEN NA REQUISIÇÃO')
+    console.log(token)
+    console.log(this.httpOptions)
     const url = 'classroom/';
     return this.http.get<any>(this.rooturl+url, this.httpOptions)
   }
 
   //pega as turmas em que o user é um aluno
-  getClassroomStudent(){
-    console.log(localStorage.getItem("token"))
+  getClassroomStudent(token){
+    this.httpOptions.headers = this.httpOptions.headers.set("Authorization", "JWT " + token)
+    console.log('TOKEN NA REQUISIÇÃO')
+    console.log(token)
+    console.log(this.httpOptions.headers)
     const url = 'classroom/student/';
     return this.http.get<any>(this.rooturl+url, this.httpOptions)
   }

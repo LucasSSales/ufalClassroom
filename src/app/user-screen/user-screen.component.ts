@@ -22,13 +22,15 @@ export class UserScreenComponent implements OnInit {
     private route:ActivatedRoute, public dialog: MatDialog) { }
 
   ngOnInit() {
-    console.log(this.route.toString())
-    this.getClassrooms()
+    console.log("TOKEN ANTES DE CHAMAR")
+    console.log(localStorage.getItem('token'))
+    this.getClassrooms(localStorage.getItem('token'))
   }
 
-  getClassrooms(){
-    console.log(localStorage.getItem("token"))
-    this.api.getClassroom().subscribe(
+  getClassrooms(token){
+    console.log("TOKEN AO CHAMAR")
+    console.log(token)
+    this.api.getClassroom(token).subscribe(
       data=>{
         console.log(data)
         this.profesor = data
@@ -36,7 +38,7 @@ export class UserScreenComponent implements OnInit {
       },
     );
 
-    this.api.getClassroomStudent().subscribe(
+    this.api.getClassroomStudent(token).subscribe(
       data=>{
         console.log(data)
         this.student = data
@@ -77,7 +79,7 @@ export class UserScreenComponent implements OnInit {
         this.api.createClass(result).subscribe((data)=>{
           console.log(data)
           this.loading = true;
-          this.getClassrooms()
+          this.getClassrooms(localStorage.getItem("token"))
         }, 
       (error)=>{
         console.log(error)
@@ -88,7 +90,7 @@ export class UserScreenComponent implements OnInit {
         this.api.registerInClass(result).subscribe(data=>{
           console.log(data)
           this.loading = true;
-          this.getClassrooms()
+          this.getClassrooms(localStorage.getItem("token"))
         })
         this.codigo = ""
       }
