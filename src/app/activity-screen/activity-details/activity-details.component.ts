@@ -43,12 +43,13 @@ export class ActivityDetailsComponent implements OnInit {
     )
   }
 
-  /*score(){
-    this.api.setScore().subscribe(){
+  setScore(id,score){
+    this.api.setScore(id, score).subscribe(
       (data)=>{
         console.log(data)
+        localStorage.setItem("selectedActivity", JSON.stringify(this.activity))
       }
-    }
-  }*/
+    )
+  }
 
 }

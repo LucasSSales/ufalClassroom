@@ -45,12 +45,14 @@
                         <div class="textoInterno">
                         <span>Enviado por: {{ ans.Owner.first_name }}  {{ ans.Owner.last_name }}</span>
                         <br>Comentários: {{ ans.comentary }}</div>
-                        <div class="iconDiv">
-                            <form class="example-form">
-                                <mat-form-field class="example-full-width">
-                                    <mat-label>Digite a Nota</mat-label>
-                                    <input matInput type="number" [(ngModel)]="ans.score">
+                        <div>
+                            <form class="score">
+                                <mat-form-field class="formF">
+                                    <mat-label>Nota</mat-label>
+                                    <input matInput type="number" [(ngModel)]="ans.score" 
+                                    [ngModelOptions]="{standalone: true}" class="input">
                                 </mat-form-field>
+                                <button mat-button mat-raised-button (click)="setScore(ans.id, ans.score)">Avaliar</button>
                             </form>
                         </div>
                         <div class="iconDiv" *ngIf="ans.files.length>0">

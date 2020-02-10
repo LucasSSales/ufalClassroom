@@ -91,9 +91,9 @@ export class ApiService {
     return this.http.post<any>(this.rooturl+url, answer, this.httpOptions)
   }
 
-  setScore(activityId, score){
-    const url = `activity/${activityId}/setscore/`
-    return this.http.post<any>(this.rooturl+url, score, this.httpOptions)
+  setScore(answerId, score){
+    const url = `activity/${answerId}/setscore/`
+    return this.http.post<any>(this.rooturl+url, {score: score}, this.httpOptions)
   }
 
   
