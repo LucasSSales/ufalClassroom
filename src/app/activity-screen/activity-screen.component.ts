@@ -20,7 +20,7 @@ export class ActivityScreenComponent implements OnInit {
   constructor(private router:Router, private api:ApiService) { }
 
   ngOnInit() {
-    console.log("yo")
+    //console.log(this.data)
     this.data = JSON.parse(localStorage.getItem("materia"))
     console.log(this.data)
   }
@@ -52,17 +52,26 @@ export class ActivityScreenComponent implements OnInit {
     }
 
   createActivity(){
+    var file = []
+    if(this.files){
+      file = [{filename:this.files[0].name, binary:this.filestring}]
+    }
     var act = {
       classroom: this.data.uniqueCode,
       text: this.text,
       deadline:this.date,
-      files:[]
+      files:file
     }
     this.api.createActivity(act).subscribe((data)=>{
       console.log(data)
       this.data.activities.push(data)
       localStorage.setItem("materia", JSON.stringify(this.data))
+      //this.files = undefined;
     })
   }
+
+
+
+
 
 }

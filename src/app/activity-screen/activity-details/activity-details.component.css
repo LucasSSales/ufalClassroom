@@ -51,3 +51,8 @@
 .formF{
     width: 60px;
 }
+
+.download{
+    cursor: pointer;
+    color: cornflowerblue;
+}

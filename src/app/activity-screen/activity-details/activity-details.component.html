@@ -5,6 +5,9 @@
             <mat-card-title>{{activity.text}}</mat-card-title>
             <mat-card-subtitle>Prazo: {{activity.deadline}}</mat-card-subtitle>
         </mat-card-title-group>
+        <mat-card-content *ngIf="activity.files.length>0">
+            <a class="download" (click)="downloadFile()">{{ activity.files[0].filename }}</a>
+        </mat-card-content>
          
     <div *ngIf="isOwner=='false'">
     <mat-card-content *ngIf="!loading">

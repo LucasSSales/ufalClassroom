@@ -19,14 +19,14 @@ export class ApiService {
   constructor(private http:HttpClient) { }
 
   getToken(user){
-    console.log("user")
-    console.log(user)
+    //console.log("user")
+    //console.log(user)
     const url = 'token/';
     return this.http.post<Token>(this.rooturl + url, user)
   }
 
   postUser(user:User){
-    console.log(user)
+    //console.log(user)
     const url = 'users/createuser/';
     return this.http.post<any>(this.rooturl+url, user)
   }
@@ -34,9 +34,9 @@ export class ApiService {
   //pega as turmas onde o user é o professor
   getClassroom(token){
     this.httpOptions.headers = this.httpOptions.headers.set("Authorization", "JWT " + token)
-    console.log('TOKEN NA REQUISIÇÃO')
-    console.log(token)
-    console.log(this.httpOptions)
+    //console.log('TOKEN NA REQUISIÇÃO')
+    //console.log(token)
+    //console.log(this.httpOptions)
     const url = 'classroom/';
     return this.http.get<any>(this.rooturl+url, this.httpOptions)
   }
@@ -44,9 +44,9 @@ export class ApiService {
   //pega as turmas em que o user é um aluno
   getClassroomStudent(token){
     this.httpOptions.headers = this.httpOptions.headers.set("Authorization", "JWT " + token)
-    console.log('TOKEN NA REQUISIÇÃO')
-    console.log(token)
-    console.log(this.httpOptions.headers)
+    //console.log('TOKEN NA REQUISIÇÃO')
+    //console.log(token)
+    //console.log(this.httpOptions.headers)
     const url = 'classroom/student/';
     return this.http.get<any>(this.rooturl+url, this.httpOptions)
   }
@@ -54,7 +54,7 @@ export class ApiService {
   //cria uma turma nova
   createClass(className){
     const url = 'classroom/';
-    console.log({name:className})
+    //console.log({name:className})
     return this.http.post<any>(this.rooturl+url, {name:className}, this.httpOptions);
   }
 

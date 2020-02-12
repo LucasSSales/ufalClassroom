@@ -86,6 +86,7 @@ export class Activity{
     text: string;
     pubDate: string;
     deadline: string;
+    files:any[];
 }
 
 export class Classroom{

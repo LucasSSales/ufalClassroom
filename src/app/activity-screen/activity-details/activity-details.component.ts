@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Activity } from '../../models';
 import { ApiService } from '../../services/api.service';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-activity-details',
@@ -26,7 +27,10 @@ export class ActivityDetailsComponent implements OnInit {
   }
 
   downloadFile(){
-    console.log("quem sabe um dia")
+    console.log(this.activity.files)
+    //console.log()
+    //saveAs(this.base64toBlob(this.activity.files[0].binary, "image/jpeg"), 'maki.jpg')
+    saveAs(this.base64toBlob(this.activity.files[0].binary, "application/pdf"), this.activity.files[0].filename)
   }
 
   sendAnswer(){
@@ -68,5 +72,31 @@ export class ActivityDetailsComponent implements OnInit {
     var binaryString = readerEvt.target.result;
     this.filestring = btoa(binaryString);  // Converting binary string data.
     }
+
+    //credits for this function
+    //https://stackoverflow.com/questions/37203771/download-base64-data-using-javascript-ie11/37204096
+    //https://stackoverflow.com/questions/16245767/creating-a-blob-from-a-base64-string-in-javascript
+    base64toBlob = function (base64Data, contentType) {
+      contentType = contentType || '';
+      var sliceSize = 1024;
+      var byteCharacters = atob(base64Data);
+      //var byteCharacters = decodeURIComponent(escape(window.atob(base64Data)))
+      var bytesLength = byteCharacters.length;
+      var slicesCount = Math.ceil(bytesLength / sliceSize);
+      var byteArrays = new Array(slicesCount);
+  
+      for (var sliceIndex = 0; sliceIndex < slicesCount; ++sliceIndex) {
+          var begin = sliceIndex * sliceSize;
+          var end = Math.min(begin + sliceSize, bytesLength);
+  
+          var bytes = new Array(end - begin);
+          for (var offset = begin, i = 0 ; offset < end; ++i, ++offset) {
+              bytes[i] = byteCharacters[offset].charCodeAt(0);
+          }
+          byteArrays[sliceIndex] = new Uint8Array(bytes);
+      }
+      return new Blob(byteArrays, { type: contentType });
+  }
+
 
 }
